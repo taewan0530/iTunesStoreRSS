@@ -10,7 +10,7 @@
 		129717F11EA8DC6B00C10677 /* AppRssListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129717F01EA8DC6B00C10677 /* AppRssListViewController.swift */; };
 		129717F61EA8DCFD00C10677 /* AppRssTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129717F51EA8DCFD00C10677 /* AppRssTableViewCell.swift */; };
 		129717F91EA8DDCD00C10677 /* Style+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129717F81EA8DDCD00C10677 /* Style+UIColor.swift */; };
-		129717FB1EA8DF0A00C10677 /* AppRssTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129717FA1EA8DF0A00C10677 /* AppRssTableViewModel.swift */; };
+		129717FD1EA8E10A00C10677 /* AppLookupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129717FC1EA8E10A00C10677 /* AppLookupViewController.swift */; };
 		12B5AE231EA8D24B008627A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B5AE221EA8D24B008627A4 /* AppDelegate.swift */; };
 		12B5AE281EA8D24B008627A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12B5AE261EA8D24B008627A4 /* Main.storyboard */; };
 		12B5AE2A1EA8D24B008627A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12B5AE291EA8D24B008627A4 /* Assets.xcassets */; };
@@ -22,7 +22,7 @@
 		129717F01EA8DC6B00C10677 /* AppRssListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppRssListViewController.swift; sourceTree = "<group>"; };
 		129717F51EA8DCFD00C10677 /* AppRssTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppRssTableViewCell.swift; sourceTree = "<group>"; };
 		129717F81EA8DDCD00C10677 /* Style+UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Style+UIColor.swift"; sourceTree = "<group>"; };
-		129717FA1EA8DF0A00C10677 /* AppRssTableViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppRssTableViewModel.swift; sourceTree = "<group>"; };
+		129717FC1EA8E10A00C10677 /* AppLookupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppLookupViewController.swift; sourceTree = "<group>"; };
 		12B5AE1F1EA8D24B008627A4 /* iTunesStoreRss.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTunesStoreRss.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12B5AE221EA8D24B008627A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		12B5AE271EA8D24B008627A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -52,6 +52,7 @@
 				129717F41EA8DCDF00C10677 /* View */,
 				129717F31EA8DCD400C10677 /* ViewModel */,
 				129717F01EA8DC6B00C10677 /* AppRssListViewController.swift */,
+				129717FC1EA8E10A00C10677 /* AppLookupViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -68,7 +69,6 @@
 		129717F31EA8DCD400C10677 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				129717FA1EA8DF0A00C10677 /* AppRssTableViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -87,6 +87,13 @@
 				129717F81EA8DDCD00C10677 /* Style+UIColor.swift */,
 			);
 			path = Style;
+			sourceTree = "<group>";
+		};
+		129717FE1EA8E14000C10677 /* API */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 		12B5AE161EA8D24B008627A4 = {
@@ -110,6 +117,7 @@
 		12B5AE211EA8D24B008627A4 /* iTunesStoreRss */ = {
 			isa = PBXGroup;
 			children = (
+				129717FE1EA8E14000C10677 /* API */,
 				129717F71EA8DDB000C10677 /* Style */,
 				129717EF1EA8DC6B00C10677 /* Controller */,
 				129717F21EA8DC7000C10677 /* Storyboard */,
@@ -261,9 +269,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				129717FB1EA8DF0A00C10677 /* AppRssTableViewModel.swift in Sources */,
 				129717F11EA8DC6B00C10677 /* AppRssListViewController.swift in Sources */,
 				129717F61EA8DCFD00C10677 /* AppRssTableViewCell.swift in Sources */,
+				129717FD1EA8E10A00C10677 /* AppLookupViewController.swift in Sources */,
 				129717F91EA8DDCD00C10677 /* Style+UIColor.swift in Sources */,
 				12B5AE231EA8D24B008627A4 /* AppDelegate.swift in Sources */,
 			);
