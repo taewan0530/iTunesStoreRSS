@@ -27,7 +27,10 @@ extension Reactive where Base: LookupService {
         return Router.lookup(id: self.base.id)
             .asRequset()
             .rx.responseSwiftyJSON()
-            .map { $0["results"].arrayValue.first ?? JSON(parseJSON: "{}") }
-            .map { LookupModel($0["feed"]["entry"]) }
+            .map {
+                $0["results"].arrayValue.first ?? JSON(parseJSON: "{}")
+            }.map {
+                LookupModel($0["feed"]["entry"])
+            }.shareReplay(1)
     }
 }

@@ -13,6 +13,7 @@ import SwiftyJSON
 
 
 final class RssService: NSObject {
+    fileprivate var rxRefresh: PublishSubject<Void> = .init()
     
     let genre: Router.Genre
     let limit: Int
@@ -25,11 +26,33 @@ final class RssService: NSObject {
 }
 
 extension Reactive where Base: RssService {
-    func load() -> Observable<RssModel> {
-        
-        return Router.topFreeApplications(limit: self.base.limit, genre: self.base.genre)
+    var refresh: PublishSubject<Void> {
+        return self.base.rxRefresh
+    }
+    
+    var dataSources: Observable<[RssModel]> {
+        let responseJSON = Router.topFreeApplications(limit: self.base.limit, genre: self.base.genre)
             .asRequset()
             .rx.responseSwiftyJSON()
-            .map { RssModel($0["feed"]["entry"]) }
+        
+        return self.base.rxRefresh
+            .flatMap { responseJSON }
+            .map { RssModel.collection($0["feed"]["entry"]) }
+            .shareReplay(1)
+        
     }
+    //
+    //    func load() -> Observable<[RssModel]> {
+    //        print("RssService load")
+    //
+    //        let rxLoad = Router.topFreeApplications(limit: self.base.limit, genre: self.base.genre)
+    //            .asRequset()
+    //            .rx.responseSwiftyJSON()
+    //
+    //        return self.base.rxRefresh
+    //            .flatMap { rxLoad }
+    //            .map {
+    //                RssModel.collection($0["feed"]["entry"])
+    //            }//.shareReplay(1)
+    //    }
 }

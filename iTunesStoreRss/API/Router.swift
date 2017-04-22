@@ -23,7 +23,7 @@ enum Router: URLRequestConvertible {
     var result: (path: String, parameters: Parameters?)  {
         switch self {
         case .topFreeApplications(let limit, let genre):
-            return ("/kr/rss/topfreeapplications/limit=\(limit)/genre=\(genre)/json", nil)
+            return ("/kr/rss/topfreeapplications/limit=\(limit)/genre=\(genre.rawValue)/json", nil)
         case .lookup(let id):
             return ("/lookup", ["id": id, "country": "kr"])
             

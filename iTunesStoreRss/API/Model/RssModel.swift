@@ -18,7 +18,7 @@ struct RssModel: JSONCollection {
     
     init(_ json: JSON) {
         self.id = json["id"]["attributes"]["im:id"].stringValue
-        self.title = json["title"]["label"].stringValue
+        self.title = json["im:name"]["label"].stringValue
         
         if let lastImage = json["im:image"].arrayValue.last {     
             self.imageURL = URL(string: lastImage["label"].stringValue)
