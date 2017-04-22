@@ -8,17 +8,23 @@
 
 import Foundation
 
-
+import RxSwift
+import RxCocoa
 
 protocol AppRssListViewModelType {
     var input: AppRssListViewModelInputType { get }
-    var output: AppRssListViewModelInputType { get }
+    var output: AppRssListViewModelOutputType { get }
 }
 
 protocol AppRssListViewModelInputType {
+    var refresh: PublishSubject<Void> { get }
+    var itemDidSelect: PublishSubject<IndexPath> { get }
     
 }
 
 protocol AppRssListViewModelOutputType {
+    var sections: Driver<[RssSectionData]> { get }
+    var refreshCompleted: Driver<Bool> { get }
+    var selectedAppId: Driver<String> { get }
     
 }
