@@ -10,7 +10,7 @@ import UIKit
 
 //SR StoreRss -a-;
 extension UIColor {
-    static let SRGray = UIColor(red: 234/255, green: 234/255, blue: 234/355, alpha: 1)
+    static let SRGray = UIColor(red: 234/255, green: 234/255, blue: 234/255, alpha: 1)
 }
 
 
