@@ -8,8 +8,11 @@
 
 import UIKit
 
-final class AppRssTableViewCell: UITableViewCell {
+import AlamofireImage
 
+
+final class AppRssTableViewCell: UITableViewCell {
+    
     @IBOutlet weak var rankLabel: UILabel!
     @IBOutlet weak var thumbnailImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -19,10 +22,24 @@ final class AppRssTableViewCell: UITableViewCell {
         self.updateStyle()
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        thumbnailImageView.af_cancelImageRequest()
+        thumbnailImageView.image = nil
+    }
+    
+    func configure(_ viewModel: AppRssTableViewModelType) {
+        rankLabel.text = "\(viewModel.rank)"
+        titleLabel.text = viewModel.title
+        if let url = viewModel.imageURL {
+            thumbnailImageView.af_setImage(withURL: url,
+                                           imageTransition: .crossDissolve(0.3))
+        }
+    }
     
     private func updateStyle() {
-        self.thumbnailImageView.layer.borderWidth = 1
-        self.thumbnailImageView.layer.borderColor = UIColor.SRGray.cgColor
-        self.thumbnailImageView.layer.cornerRadius = 16
+        thumbnailImageView.layer.borderWidth = 1
+        thumbnailImageView.layer.borderColor = UIColor.SRGray.cgColor
+        thumbnailImageView.layer.cornerRadius = 16
     }
 }

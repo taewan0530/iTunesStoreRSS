@@ -11,10 +11,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--App Lookup View Controller-->
+        <!--Top Free-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="AppLookupViewController" customModule="iTunesStoreRss" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="AppRssListViewController" customModule="iTunesStoreRss" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -51,14 +51,14 @@
                                                     <color key="textColor" red="0.47054106000000001" green="0.47062236070000002" blue="0.47052371500000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3td-Bs-bnL">
-                                                    <rect key="frame" x="126" y="31.5" width="30.5" height="21.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3td-Bs-bnL">
+                                                    <rect key="frame" x="126" y="31.5" width="209" height="21.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="i_list_arow" translatesAutoresizingMaskIntoConstraints="NO" id="NgE-wT-CoD">
-                                                    <rect key="frame" x="351" y="34" width="16" height="16"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" image="i_list_arow" translatesAutoresizingMaskIntoConstraints="NO" id="NgE-wT-CoD">
+                                                    <rect key="frame" x="343" y="34" width="16" height="16"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -67,11 +67,12 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="NgE-wT-CoD" secondAttribute="trailing" id="L3k-QB-8in"/>
                                                 <constraint firstItem="NgE-wT-CoD" firstAttribute="centerY" secondItem="nz5-R1-tu5" secondAttribute="centerY" id="PgY-Ho-3Km"/>
                                                 <constraint firstItem="hPb-we-eLV" firstAttribute="leading" secondItem="nz5-R1-tu5" secondAttribute="leading" id="VPj-Md-dtx"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="3td-Bs-bnL" secondAttribute="trailing" constant="24" id="eeU-og-xtT"/>
                                                 <constraint firstItem="hPb-we-eLV" firstAttribute="centerY" secondItem="nz5-R1-tu5" secondAttribute="centerY" id="gyL-ZW-ow0"/>
                                                 <constraint firstItem="3td-Bs-bnL" firstAttribute="centerY" secondItem="nz5-R1-tu5" secondAttribute="centerY" id="vfF-gx-U2Q"/>
                                                 <constraint firstItem="9sl-UT-NVr" firstAttribute="centerY" secondItem="nz5-R1-tu5" secondAttribute="centerY" id="yCu-Nt-IG8"/>
                                             </constraints>
-                                            <edgeInsets key="layoutMargins" top="8" left="16" bottom="8" right="8"/>
+                                            <edgeInsets key="layoutMargins" top="8" left="16" bottom="8" right="16"/>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="rankLabel" destination="hPb-we-eLV" id="F8s-lh-azO"/>
@@ -90,9 +91,9 @@
                             <constraint firstAttribute="trailing" secondItem="6uV-jz-DOW" secondAttribute="trailing" id="nJu-N7-rag"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="kKL-u2-rGg"/>
+                    <navigationItem key="navigationItem" title="Top Free" id="kKL-u2-rGg"/>
                     <connections>
-                        <outlet property="tableView" destination="6uV-jz-DOW" id="glI-sN-IND"/>
+                        <outlet property="tableView" destination="6uV-jz-DOW" id="cgl-0A-9ZL"/>
                         <segue destination="7eE-bO-NVo" kind="show" id="Yt9-42-qrp"/>
                     </connections>
                 </viewController>
@@ -100,10 +101,10 @@
             </objects>
             <point key="canvasLocation" x="52" y="118"/>
         </scene>
-        <!--View Controller-->
+        <!--App Lookup View Controller-->
         <scene sceneID="oly-Xh-Vqt">
             <objects>
-                <viewController id="7eE-bO-NVo" sceneMemberID="viewController">
+                <viewController id="7eE-bO-NVo" customClass="AppLookupViewController" customModule="iTunesStoreRss" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5qj-H1-yCN"/>
                         <viewControllerLayoutGuide type="bottom" id="bll-mC-TTk"/>

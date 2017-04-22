@@ -12,9 +12,14 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
+    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        let navigationController = self.window?.rootViewController as? UINavigationController
+        let appRssListViewController = navigationController?.viewControllers.last as? AppRssListViewController
+        appRssListViewController?.viewModel = AppRssListViewModel(genre: .finance)
         // Override point for customization after application launch.
         return true
     }
