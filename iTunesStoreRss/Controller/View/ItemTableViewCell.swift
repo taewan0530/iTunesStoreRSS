@@ -11,7 +11,7 @@ import UIKit
 import AlamofireImage
 
 
-final class AppItemTableViewCell: UITableViewCell {
+final class ItemTableViewCell: UITableViewCell {
     
     @IBOutlet weak var rankLabel: UILabel!
     @IBOutlet weak var thumbnailImageView: UIImageView!
@@ -28,18 +28,25 @@ final class AppItemTableViewCell: UITableViewCell {
         thumbnailImageView.image = nil
     }
     
-    func configure(_ viewModel: AppItemTableViewModelType) {
+    private func updateStyle() {
+        thumbnailImageView.layer.borderWidth = 1
+        thumbnailImageView.layer.borderColor = UIColor.SRGray.cgColor
+        thumbnailImageView.layer.cornerRadius = 16
+    }
+}
+
+
+
+// MARK: - viewModel
+extension ItemTableViewCell: Configurable, ConfigureCell {
+
+
+    func configure(by viewModel: ItemTableCellModelType) {
         rankLabel.text = "\(viewModel.rank)"
         titleLabel.text = viewModel.title
         if let url = viewModel.imageURL {
             thumbnailImageView.af_setImage(withURL: url,
                                            imageTransition: .crossDissolve(0.3))
         }
-    }
-    
-    private func updateStyle() {
-        thumbnailImageView.layer.borderWidth = 1
-        thumbnailImageView.layer.borderColor = UIColor.SRGray.cgColor
-        thumbnailImageView.layer.cornerRadius = 16
     }
 }

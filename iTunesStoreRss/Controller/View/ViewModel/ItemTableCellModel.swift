@@ -1,5 +1,5 @@
 //
-//  AppRssTableViewModel.swift
+//  ItemTableViewModel.swift
 //  iTunesStoreRss
 //
 //  Created by taewan on 2017. 4. 20..
@@ -9,14 +9,14 @@
 import Foundation
 
 
-protocol AppItemTableViewModelType {
+protocol ItemTableCellModelType: ViewModelType {
     
     var rank: Int  { get }
     var title: String { get }
     var imageURL: URL? { get }
 }
 
-struct AppItemTableViewModel: AppItemTableViewModelType {
+struct ItemTableCellModel: ItemTableCellModelType {
     
     let rank: Int
     let title: String

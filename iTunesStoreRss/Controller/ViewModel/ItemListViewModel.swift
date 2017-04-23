@@ -16,7 +16,7 @@ struct ItemSectionData {
     var items: [Item]
 }
 extension ItemSectionData: SectionModelType {
-    typealias Item = AppItemTableViewModel
+    typealias Item = ItemTableCellModelType
     
     init(original: ItemSectionData, items: [Item]) {
         self = original
@@ -25,9 +25,9 @@ extension ItemSectionData: SectionModelType {
 }
 
 
-final class AppItemListViewModel: NSObject, AppItemListViewModelType, AppItemListViewModelInputType, AppItemListViewModelOutputType {
-    var input: AppItemListViewModelInputType { return self }
-    var output: AppItemListViewModelOutputType { return self }
+final class ItemListViewModel: NSObject, ItemListViewModelType, ItemListViewModelInputType, ItemListViewModelOutputType {
+    var input: ItemListViewModelInputType { return self }
+    var output: ItemListViewModelOutputType { return self }
     
     let service: ItemService
     
@@ -38,7 +38,7 @@ final class AppItemListViewModel: NSObject, AppItemListViewModelType, AppItemLis
     //output
     let sections: Driver<[ItemSectionData]>
     var refreshCompleted: Driver<Bool>
-    let selectedAppId: Driver<String>
+    let performLookup: Driver<LookupViewModelType?>
     
     init(genre: Router.Genre, limit: Int = 50) {
         self.service = .init(feedType: .topFreeApplications, genre: genre, limit: 50)
@@ -49,20 +49,20 @@ final class AppItemListViewModel: NSObject, AppItemListViewModelType, AppItemLis
                 .takeUntil(rx.deallocated)
                 .bind(to: self.service.rx.refresh)
         }
-        
-        
+                
         let rssDataSources = self.service.rx.dataSources
         
-        self.selectedAppId = self.itemDidSelect
+        self.performLookup = self.itemDidSelect
             .withLatestFrom(rssDataSources) { (indexPath, models)  in
                 models[indexPath.row]
-            }.map { $0.id }
-            .asDriver(onErrorJustReturn: "")
+            }.map {
+                LookupViewModel(item: $0)
+            }.asDriver(onErrorJustReturn: nil)
         
         self.sections = rssDataSources
             .map {
                 $0.enumerated().map { (i, item) in
-                    AppItemTableViewModel(rank: i + 1, model: item)
+                    ItemTableCellModel(rank: i + 1, model: item)
                 }
             }.map {
                 [ItemSectionData(items: $0)]

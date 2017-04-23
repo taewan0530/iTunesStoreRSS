@@ -11,20 +11,20 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-protocol AppItemListViewModelType {
-    var input: AppItemListViewModelInputType { get }
-    var output: AppItemListViewModelOutputType { get }
+protocol ItemListViewModelType: ViewModelType {
+    var input: ItemListViewModelInputType { get }
+    var output: ItemListViewModelOutputType { get }
 }
 
-protocol AppItemListViewModelInputType {
+protocol ItemListViewModelInputType {
     var refresh: PublishSubject<Void> { get }
     var itemDidSelect: PublishSubject<IndexPath> { get }
     
 }
 
-protocol AppItemListViewModelOutputType {
+protocol ItemListViewModelOutputType {
     var sections: Driver<[ItemSectionData]> { get }
     var refreshCompleted: Driver<Bool> { get }
-    var selectedAppId: Driver<String> { get }
+    var performLookup: Driver<LookupViewModelType?> { get }
     
 }

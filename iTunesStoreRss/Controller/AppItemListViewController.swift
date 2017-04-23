@@ -13,7 +13,7 @@ import RxCocoa
 import RxDataSources
 import RxBindNext
 
-final class AppRssListViewController: RxViewController {
+final class AppItemListViewController: RxViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -21,7 +21,7 @@ final class AppRssListViewController: RxViewController {
     
     let dataSource = RxTableViewSectionedReloadDataSource<ItemSectionData>()
     
-    var viewModel: AppItemListViewModelType!
+    var viewModel: ItemListViewModelType!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,16 +30,33 @@ final class AppRssListViewController: RxViewController {
         rxSetup()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let indexPath = tableView.indexPathForSelectedRow {
+            tableView.deselectRow(at: indexPath, animated: false)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        defer {
+            super.prepare(for: segue, sender: sender)
+        }
+        
+        switch segue.destination {
+        case let controller as AppLookupViewController:
+            controller.viewModel = sender as? LookupViewModelType
+        default:
+            break
+        }
+        
+    }
+    
     private func setup() {
         tableView.addSubview(refreshControl)
+        
         dataSource.configureCell = { (datasource, tableView, indexPath, item) in
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-            if let rssCell = cell as? AppItemTableViewCell {
-                //뷰모델 생성
-                rssCell.configure(item)
-                
-            }
-            //여기에서.
+            (cell as? ConfigureCell)?.configure(by: item)
             return cell
         }
     }
@@ -53,10 +70,10 @@ final class AppRssListViewController: RxViewController {
         // input
         let input = self.viewModel.input
         
-        let rxWillAppear = self.rx.viewWillAppear.map { _ in }
-        let rxRefresh = self.refreshControl.rx.controlEvent(.valueChanged).map { _ in }
+        let viewWillAppear = self.rx.viewWillAppear.map { _ in }.take(1)
+        let refresh = self.refreshControl.rx.controlEvent(.valueChanged).map { _ in }
         
-        Observable.from([rxWillAppear, rxRefresh])
+        Observable.from([viewWillAppear, refresh])
             .merge()
             .bind(to: input.refresh)
             .disposed(by: disposeBag)
@@ -69,6 +86,7 @@ final class AppRssListViewController: RxViewController {
         
         // output
         let output = self.viewModel.output
+        
         output.sections
             .drive(tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
@@ -77,7 +95,7 @@ final class AppRssListViewController: RxViewController {
             .drive(self.refreshControl.rx.isRefreshing)
             .disposed(by: disposeBag)
         
-        output.selectedAppId
+        output.performLookup
             .map { ("ToLookup", $0) }//음 이작업을 어디서 해줄까..
             .drive(weak: self, type(of: self).performSegue)
             .disposed(by: disposeBag)
@@ -87,6 +105,6 @@ final class AppRssListViewController: RxViewController {
 }
 
 
-extension AppRssListViewController: UITableViewDelegate {
+extension AppItemListViewController: UITableViewDelegate {
     
 }
