@@ -6,9 +6,10 @@ target 'iTunesStoreRss' do
   use_frameworks!
 
   # Pods for iTunesStoreRss
-  pod 'RxSwift',    '~> 3.0'
-  pod 'RxCocoa',    '~> 3.0'
+  pod 'RxSwift',    '~> 3.4'
+  pod 'RxCocoa',    '~> 3.4'
   pod 'RxDataSources', '~> 1.0'
+  pod 'RxBindNext', :git => 'https://github.com/taewan0530/RxBindNext'
 
   pod 'Alamofire', '~> 4.4'
   pod 'AlamofireImage', '~> 3.1'

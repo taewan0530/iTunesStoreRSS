@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let navigationController = self.window?.rootViewController as? UINavigationController
         let appRssListViewController = navigationController?.viewControllers.last as? AppRssListViewController
-        appRssListViewController?.viewModel = AppRssListViewModel(genre: .finance)
+        appRssListViewController?.viewModel = AppItemListViewModel(genre: .finance)
         // Override point for customization after application launch.
         return true
     }
