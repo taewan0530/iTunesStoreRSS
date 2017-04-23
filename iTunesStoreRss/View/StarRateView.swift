@@ -13,7 +13,7 @@ import UIKit
 open class StarRateView: UIView {
     
     @IBInspectable
-    var currentRate: CGFloat = 0 {
+    var currentRate: Float = 0 {
         didSet { self.setNeedsDisplay() }
     }
     
@@ -52,13 +52,13 @@ open class StarRateView: UIView {
         guard let emptyImage = self.emptyImage,
             let halfImage = self.halfImage,
             let fillImage = self.fillImage else { return }
-      
+
         let size = emptyImage.size
+        let currentRate = CGFloat(self.currentRate)
         
         for i in 0..<maxRate {
             let index = CGFloat(i)
             let x = (size.width + spacing) * index
-            
             if index < currentRate {
                 if 0 < floor(currentRate - index) {
                      fillImage.draw(at: .init(x: x, y: 0))
@@ -71,6 +71,7 @@ open class StarRateView: UIView {
         }
     }
     
+
     open override var intrinsicContentSize: CGSize {
         let size = self.emptyImage?.size ?? CGSize(width: 12, height: 12)
         let count = CGFloat(maxRate)
