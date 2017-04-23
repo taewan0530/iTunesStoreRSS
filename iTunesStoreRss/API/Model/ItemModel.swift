@@ -16,9 +16,15 @@ struct ItemModel: JSONCollection {
     let title: String
     let imageURL: URL?
     
+    let artist: String
+    let category: String
+    
     init(_ json: JSON) {
         self.id = json["id"]["attributes"]["im:id"].stringValue
         self.title = json["im:name"]["label"].stringValue
+        
+        self.artist = json["im:artist"]["label"].stringValue
+        self.category = json["category"]["label"].stringValue
         
         if let lastImage = json["im:image"].arrayValue.last {     
             self.imageURL = URL(string: lastImage["label"].stringValue)

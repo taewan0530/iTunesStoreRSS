@@ -36,7 +36,7 @@ extension Reactive where Base: LookupService {
         return self.base.rxRefresh
             .flatMap { responseJSON }
             .map { $0["results"].arrayValue.first ?? JSON(parseJSON: "{}") }
-            .map { LookupModel($0["feed"]["entry"]) }
+            .map { LookupModel($0) }
             .shareReplay(1)
     }
 }
