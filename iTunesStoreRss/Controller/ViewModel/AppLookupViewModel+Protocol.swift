@@ -8,6 +8,8 @@
 
 import Foundation
 
+import RxSwift
+import RxCocoa
 
 protocol AppLookupViewModelType {
     var input: AppLookupViewModelInputType { get }
@@ -15,7 +17,7 @@ protocol AppLookupViewModelType {
 }
 
 protocol AppLookupViewModelInputType {
-    
+    var refresh: PublishSubject<Void> { get }
 }
 
 protocol AppLookupViewModelOutputType {

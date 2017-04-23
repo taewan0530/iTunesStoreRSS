@@ -9,20 +9,20 @@
 import Foundation
 
 
-protocol AppRssTableViewModelType {
+protocol AppItemTableViewModelType {
     
     var rank: Int  { get }
     var title: String { get }
     var imageURL: URL? { get }
 }
 
-struct AppRssTableViewModel: AppRssTableViewModelType {
+struct AppItemTableViewModel: AppItemTableViewModelType {
     
     let rank: Int
     let title: String
     let imageURL: URL?
     
-    init(rank: Int, model: RssModel) {
+    init(rank: Int, model: ItemModel) {
         
         self.rank = rank
         self.title = model.title

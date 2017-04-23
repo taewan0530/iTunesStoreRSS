@@ -11,7 +11,7 @@ import UIKit
 import AlamofireImage
 
 
-final class AppRssTableViewCell: UITableViewCell {
+final class AppItemTableViewCell: UITableViewCell {
     
     @IBOutlet weak var rankLabel: UILabel!
     @IBOutlet weak var thumbnailImageView: UIImageView!
@@ -28,7 +28,7 @@ final class AppRssTableViewCell: UITableViewCell {
         thumbnailImageView.image = nil
     }
     
-    func configure(_ viewModel: AppRssTableViewModelType) {
+    func configure(_ viewModel: AppItemTableViewModelType) {
         rankLabel.text = "\(viewModel.rank)"
         titleLabel.text = viewModel.title
         if let url = viewModel.imageURL {

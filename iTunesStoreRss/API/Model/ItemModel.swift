@@ -11,7 +11,7 @@ import Foundation
 import SwiftyJSON
 
 
-struct RssModel: JSONCollection {
+struct ItemModel: JSONCollection {
     let id: String
     let title: String
     let imageURL: URL?

@@ -13,6 +13,7 @@ import SwiftyJSON
 
 
 final class LookupService: NSObject {
+    fileprivate var rxRefresh: PublishSubject<Void> = .init()
     
     let id: String
     
@@ -23,14 +24,19 @@ final class LookupService: NSObject {
 }
 
 extension Reactive where Base: LookupService {
-    func load() -> Observable<LookupModel> {
-        return Router.lookup(id: self.base.id)
-            .asRequset()
+    var refresh: PublishSubject<Void> {
+        return self.base.rxRefresh
+    }
+    
+    var dataSource: Observable<LookupModel> {
+        let responseJSON = Router.lookup(id: self.base.id)
+            .asDataRequest()
             .rx.responseSwiftyJSON()
-            .map {
-                $0["results"].arrayValue.first ?? JSON(parseJSON: "{}")
-            }.map {
-                LookupModel($0["feed"]["entry"])
-            }.shareReplay(1)
+
+        return self.base.rxRefresh
+            .flatMap { responseJSON }
+            .map { $0["results"].arrayValue.first ?? JSON(parseJSON: "{}") }
+            .map { LookupModel($0["feed"]["entry"]) }
+            .shareReplay(1)
     }
 }

@@ -11,6 +11,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import RxDataSources
+import RxBindNext
 
 final class AppRssListViewController: RxViewController {
     
@@ -18,9 +19,9 @@ final class AppRssListViewController: RxViewController {
     
     let refreshControl = UIRefreshControl()
     
-    let dataSource = RxTableViewSectionedReloadDataSource<RssSectionData>()
+    let dataSource = RxTableViewSectionedReloadDataSource<ItemSectionData>()
     
-    var viewModel: AppRssListViewModelType!
+    var viewModel: AppItemListViewModelType!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +34,7 @@ final class AppRssListViewController: RxViewController {
         tableView.addSubview(refreshControl)
         dataSource.configureCell = { (datasource, tableView, indexPath, item) in
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-            if let rssCell = cell as? AppRssTableViewCell {
+            if let rssCell = cell as? AppItemTableViewCell {
                 //뷰모델 생성
                 rssCell.configure(item)
                 
@@ -57,7 +58,12 @@ final class AppRssListViewController: RxViewController {
         
         Observable.from([rxWillAppear, rxRefresh])
             .merge()
-            .bindTo(input.refresh)
+            .bind(to: input.refresh)
+            .disposed(by: disposeBag)
+        
+        self.tableView
+            .rx.itemSelected
+            .bind(to: input.itemDidSelect)
             .disposed(by: disposeBag)
         
         
@@ -69,6 +75,13 @@ final class AppRssListViewController: RxViewController {
         
         output.refreshCompleted
             .drive(self.refreshControl.rx.isRefreshing)
+            .disposed(by: disposeBag)
+        
+        output.selectedAppId
+            .map { ("ToLookup", $0) }//음 이작업을 어디서 해줄까..
+            .drive(weak: self, type(of: self).performSegue)
+            .disposed(by: disposeBag)
+        
     }
     
 }

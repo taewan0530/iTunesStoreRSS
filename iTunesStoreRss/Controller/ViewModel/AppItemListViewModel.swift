@@ -12,68 +12,65 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 
-struct RssSectionData {
+struct ItemSectionData {
     var items: [Item]
 }
-extension RssSectionData: SectionModelType {
-    typealias Item = AppRssTableViewModel
+extension ItemSectionData: SectionModelType {
+    typealias Item = AppItemTableViewModel
     
-    init(original: RssSectionData, items: [Item]) {
+    init(original: ItemSectionData, items: [Item]) {
         self = original
         self.items = items
     }
 }
 
 
-final class AppRssListViewModel: NSObject, AppRssListViewModelType, AppRssListViewModelInputType, AppRssListViewModelOutputType {
-    var input: AppRssListViewModelInputType { return self }
-    var output: AppRssListViewModelOutputType { return self }
+final class AppItemListViewModel: NSObject, AppItemListViewModelType, AppItemListViewModelInputType, AppItemListViewModelOutputType {
+    var input: AppItemListViewModelInputType { return self }
+    var output: AppItemListViewModelOutputType { return self }
     
-    let service: RssService
+    let service: ItemService
     
     //input
     let refresh: PublishSubject<Void> = .init()
     let itemDidSelect: PublishSubject<IndexPath> = .init()
     
     //output
-    let sections: Driver<[RssSectionData]>
+    let sections: Driver<[ItemSectionData]>
     var refreshCompleted: Driver<Bool>
     let selectedAppId: Driver<String>
     
     init(genre: Router.Genre, limit: Int = 50) {
-        self.service = .init(genre: genre, limit: limit)
+        self.service = .init(feedType: .topFreeApplications, genre: genre, limit: 50)
         
         defer {
             //input
             _ = self.refresh
                 .takeUntil(rx.deallocated)
-                .bindTo(self.service.rx.refresh)
+                .bind(to: self.service.rx.refresh)
         }
         
         
-        //output
-        let rssDataSource = self.service.rx.dataSources
-                
-        self.selectedAppId = itemDidSelect
-            .withLatestFrom(rssDataSource) { (indexPath, models)  in
+        let rssDataSources = self.service.rx.dataSources
+        
+        self.selectedAppId = self.itemDidSelect
+            .withLatestFrom(rssDataSources) { (indexPath, models)  in
                 models[indexPath.row]
             }.map { $0.id }
             .asDriver(onErrorJustReturn: "")
         
-        self.sections = rssDataSource
+        self.sections = rssDataSources
             .map {
                 $0.enumerated().map { (i, item) in
-                    AppRssTableViewModel(rank: i + 1, model: item)
+                    AppItemTableViewModel(rank: i + 1, model: item)
                 }
             }.map {
-                [RssSectionData(items: $0)]
+                [ItemSectionData(items: $0)]
             }.asDriver(onErrorJustReturn: [])
         
 
-        self.refreshCompleted = rssDataSource
-            .do(onNext: { _ in
-                print("refreshCompleted")
-            }).map { _ in false }
+        self.refreshCompleted = rssDataSources
+            .map { _ in false }
             .asDriver(onErrorJustReturn: false)
         
         super.init()

@@ -17,7 +17,9 @@ extension DataRequest {
     ///
     /// - Parameter error: AFError
     private static func responseError(_ error: AFError?) {
-        dump(error)
+        guard let error = error else { return }
+        
+        print("responseCode:\(error.responseCode ?? -1), description:\(error.errorDescription ?? "-")")
     }
     
     public func responseSwiftyJSON(_ completionHandler: @escaping (DataResponse<JSON>) -> Void) -> Self {
