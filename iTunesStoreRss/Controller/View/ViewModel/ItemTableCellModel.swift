@@ -8,24 +8,36 @@
 
 import Foundation
 
+import RxSwift
+import RxCocoa
 
 protocol ItemTableCellModelType: ViewModelType {
-    
-    var rank: Int  { get }
-    var title: String { get }
-    var imageURL: URL? { get }
+    var output: ItemTableCellModelOuputType { get }
 }
 
-struct ItemTableCellModel: ItemTableCellModelType {
+protocol ItemTableCellModelOuputType: ViewModelType {
+    var rank: Driver<String>  { get }
+    var title: Driver<String> { get }
+    var imageURL: Driver<URL?> { get }
+}
+
+
+struct ItemTableCellModel: ItemTableCellModelType, ItemTableCellModelOuputType {
+    var output: ItemTableCellModelOuputType { return self }
     
-    let rank: Int
-    let title: String
-    let imageURL: URL?
+    let rank: Driver<String>
+    let title: Driver<String>
+    let imageURL: Driver<URL?>
     
     init(rank: Int, model: ItemModel) {
         
-        self.rank = rank
-        self.title = model.title
-        self.imageURL = model.imageURL
+        self.rank = Observable.just("\(rank)")
+            .asDriver(onErrorJustReturn: "-")
+        
+        self.title = Observable.just(model.title)
+            .asDriver(onErrorJustReturn: "-")
+        
+        self.imageURL = Observable.just(model.imageURL)
+            .asDriver(onErrorJustReturn: nil)
     }
 }

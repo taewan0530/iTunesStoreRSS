@@ -15,13 +15,21 @@ import RxDataSources
 struct ItemSectionData {
     var items: [Item]
 }
-extension ItemSectionData: SectionModelType {
-    typealias Item = ItemTableCellModelType
-    
-    init(original: ItemSectionData, items: [Item]) {
-        self = original
-        self.items = items
-    }
+
+protocol ItemListViewModelType: ViewModelType {
+    var input: ItemListViewModelInputType { get }
+    var output: ItemListViewModelOutputType { get }
+}
+
+protocol ItemListViewModelInputType {
+    var refresh: PublishSubject<Router.FeedType> { get }
+    var itemDidSelect: PublishSubject<IndexPath> { get }
+}
+
+protocol ItemListViewModelOutputType {
+    var sections: Driver<[ItemSectionData]> { get }
+    var refreshCompleted: Driver<Bool> { get }
+    var performLookup: Driver<LookupViewModelType?> { get }
 }
 
 
@@ -32,7 +40,7 @@ final class ItemListViewModel: NSObject, ItemListViewModelType, ItemListViewMode
     let service: ItemService
     
     //input
-    let refresh: PublishSubject<Void> = .init()
+    let refresh: PublishSubject<Router.FeedType> = .init()
     let itemDidSelect: PublishSubject<IndexPath> = .init()
     
     //output
@@ -74,5 +82,16 @@ final class ItemListViewModel: NSObject, ItemListViewModelType, ItemListViewMode
             .asDriver(onErrorJustReturn: false)
         
         super.init()
+    }
+}
+
+
+
+extension ItemSectionData: SectionModelType {
+    typealias Item = ItemTableCellModelType
+    
+    init(original: ItemSectionData, items: [Item]) {
+        self = original
+        self.items = items
     }
 }
