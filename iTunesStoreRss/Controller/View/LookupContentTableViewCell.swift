@@ -8,26 +8,38 @@
 
 import UIKit
 
-final class LookupContentTableViewCell: UITableViewCell {
+import RxSwift
+import RxCocoa
 
+final class LookupContentTableViewCell: UITableViewCell {
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
     
+    fileprivate var disposeBag = DisposeBag()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
-
+    
 }
 
 
 
 
-// MARK: - ViewModel
+// MARK: - ViewModel Configurable
 extension LookupContentTableViewCell: Configurable, ConfigureCell {
     func configure(by viewModel: LookupContentCellModelType) {
-        self.titleLabel.text = viewModel.title
-        self.contentLabel.text = viewModel.content
+        disposeBag = DisposeBag()
+        
+        let output = viewModel.output
+        
+        output.title
+            .drive(self.titleLabel.rx.text)
+            .addDisposableTo(disposeBag)
+        
+        output.content
+            .drive(self.contentLabel.rx.text)
+            .addDisposableTo(disposeBag)
     }
-    
 }

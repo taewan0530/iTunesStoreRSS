@@ -8,45 +8,118 @@
 
 import Foundation
 
+import RxSwift
+import RxCocoa
+
 
 protocol LookupHeaderViewModelType: ViewModelType {
-    var title: String { get }
-    var artistName: String { get }
-    var advisoryRating: String { get }
-    
-    var userRatingCount: Int { get }
-    var averageUserRating: Float { get }
-    
-    var artworkURL: URL? { get }
+    var output: LookupHeaderViewModelOuputType { get }
+    var input: LookupHeaderViewModelInputType { get }
 }
 
-struct LookupHeaderViewModel: LookupHeaderViewModelType {
+protocol LookupHeaderViewModelInputType: ViewModelType {
+    var actionDidTap: PublishSubject<Void> { get }
+}
+
+protocol LookupHeaderViewModelOuputType: ViewModelType {
+    var title: Driver<String> { get }
+    var artistName: Driver<String> { get }
+    var advisoryRating: Driver<String> { get }
     
-    let title: String
-    let artistName: String
-    let advisoryRating: String
+    var userRatingCount: Driver<String> { get }
+    var averageUserRating: Driver<Float> { get }
     
-    let userRatingCount: Int
-    let averageUserRating: Float
+    var openURL: Driver<URL?> { get }
+    var artworkURL: Driver<URL?> { get }
     
-    let artworkURL: URL?
+    var isAdvisoryRatingHidden: Driver<Bool> { get }
+    var isRatingCountHidden: Driver<Bool> { get }
+    var isStarRatingHidden: Driver<Bool> { get }
+}
+
+struct LookupHeaderViewModel: LookupHeaderViewModelType, LookupHeaderViewModelInputType, LookupHeaderViewModelOuputType {
+    var input: LookupHeaderViewModelInputType { return self }
+    var output: LookupHeaderViewModelOuputType { return self }
+    
+    let actionDidTap: PublishSubject<Void> = .init()
+    
+    let title: Driver<String>
+    let artistName: Driver<String>
+    let advisoryRating: Driver<String>
+    
+    let userRatingCount: Driver<String>
+    let averageUserRating: Driver<Float>
+    
+    let openURL: Driver<URL?>
+    let artworkURL: Driver<URL?>
+    
+    
+    let isAdvisoryRatingHidden: Driver<Bool>
+    let isRatingCountHidden: Driver<Bool>
+    let isStarRatingHidden: Driver<Bool>
     
     init(_ item: ItemModel) {
-        self.title = item.title
-        self.artistName = item.artist
-        self.artworkURL = item.imageURL
-        self.advisoryRating = ""
-        self.userRatingCount = 0
-        self.averageUserRating = 0
+        self.title = Observable.just(item.title)
+            .asDriver(onErrorJustReturn: "")
+        
+        self.artistName = Observable.just(item.artist)
+            .asDriver(onErrorJustReturn: "")
+        
+        self.artworkURL = Observable.just(item.imageURL)
+            .asDriver(onErrorJustReturn: nil)
+        
+        self.advisoryRating = Observable.just("")
+            .asDriver(onErrorJustReturn: "")
+        
+        self.userRatingCount = Observable.just("")
+            .asDriver(onErrorJustReturn: "")
+        
+        self.averageUserRating = Observable.just(0)
+            .asDriver(onErrorJustReturn: 0)
+        
+        self.openURL = Observable.just(nil)
+            .asDriver(onErrorJustReturn: nil)
+        
+        let isHidden = Observable.just(true)
+            .asDriver(onErrorJustReturn: true)
+        
+        self.isAdvisoryRatingHidden = isHidden
+        self.isRatingCountHidden = isHidden
+        self.isStarRatingHidden = isHidden
     }
     
     init(_ model: LookupModel) {
+        //input
+        self.openURL = self.actionDidTap
+            .map { _ in
+                model.trackViewUrl
+            }.asDriver(onErrorJustReturn: nil)
         
-        self.title = model.trackCensoredName
-        self.artistName = model.artistName
-        self.advisoryRating = model.contentAdvisoryRating
-        self.userRatingCount = model.userRatingCountForCurrentVersion
-        self.averageUserRating = model.averageUserRatingForCurrentVersion
-        self.artworkURL = model.artworkURL
+        
+        //ouput
+        self.title = Observable.just(model.trackCensoredName)
+            .asDriver(onErrorJustReturn: "")
+        
+        self.artistName = Observable.just(model.artistName)
+            .asDriver(onErrorJustReturn: "")
+        
+        self.artworkURL = Observable.just(model.artworkURL)
+            .asDriver(onErrorJustReturn: nil)
+        
+        self.advisoryRating = Observable.just(model.contentAdvisoryRating)
+            .asDriver(onErrorJustReturn: "")
+        
+        self.userRatingCount = Observable.just(model.userRatingCountForCurrentVersion)
+            .map { $0 == 0 ? "" : "(\($0))"}
+            .asDriver(onErrorJustReturn: "")
+        
+        self.averageUserRating = Observable.just(model.averageUserRatingForCurrentVersion)
+            .asDriver(onErrorJustReturn: 0)
+        
+        self.isAdvisoryRatingHidden = self.advisoryRating.map { $0.isEmpty }
+        
+        self.isRatingCountHidden = self.userRatingCount.map { $0.isEmpty }
+        self.isStarRatingHidden = self.averageUserRating.map { $0 == 0 }
+        
     }
 }

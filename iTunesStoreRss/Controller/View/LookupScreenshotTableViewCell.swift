@@ -15,6 +15,8 @@ import RxDataSources
 
 final class LookupScreenshotTableViewCell: UITableViewCell {
     
+    
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     
     fileprivate var disposeBag = DisposeBag()
@@ -32,14 +34,11 @@ final class LookupScreenshotTableViewCell: UITableViewCell {
             
             if let imageCell = cell as? LookupScreenshotImageCell {
                 imageCell.imageView.af_setImage(withURL: item,
-                                      imageTransition: .crossDissolve(0.3))
+                                                imageTransition: .crossDissolve(0.3))
             }
-            
             return cell
         }
-
     }
-    
     
 }
 
@@ -48,15 +47,13 @@ extension LookupScreenshotTableViewCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 196, height: min(collectionView.bounds.height, 348))
     }
-    
-    
 }
 
 
 
-// MARK: - ViewModel
+// MARK: - ViewModel Configurable
 extension LookupScreenshotTableViewCell: Configurable, ConfigureCell {
-    func configure(by viewModel: LookupScreenshotCellModelType) {
+    func configure(by viewModel: LookupScreenshotCellViewModelType) {
         
         disposeBag = DisposeBag()
         
@@ -64,14 +61,16 @@ extension LookupScreenshotTableViewCell: Configurable, ConfigureCell {
             .rx.setDelegate(self)
             .disposed(by: disposeBag)
         
-        Observable.just(viewModel.urls)
-            .map { [SectionModel(model: Void(), items: $0)] }
-            .asDriver(onErrorJustReturn: [])
-            .drive(collectionView.rx.items(dataSource: dataSource))
+        let output = viewModel.output
+        
+        output.title
+            .drive(self.titleLabel.rx.text)
             .disposed(by: disposeBag)
         
+        output.sections
+            .drive(self.collectionView.rx.items(dataSource: dataSource))
+            .disposed(by: disposeBag)
     }
-    
 }
 
 
