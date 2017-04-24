@@ -41,6 +41,7 @@
 		12B5AE281EA8D24B008627A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12B5AE261EA8D24B008627A4 /* Main.storyboard */; };
 		12B5AE2A1EA8D24B008627A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12B5AE291EA8D24B008627A4 /* Assets.xcassets */; };
 		12B5AE2D1EA8D24B008627A4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12B5AE2B1EA8D24B008627A4 /* LaunchScreen.storyboard */; };
+		4DCAB9C8C2F2370C057FEBBD /* Pods_iTunesStoreRSS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D487DF12EC8027230CA7763 /* Pods_iTunesStoreRSS.framework */; };
 		653CF78EAE6C00050D3C3F90 /* Pods_iTunesStoreRss.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 698943CE1ABE6BAE8BEBBB7A /* Pods_iTunesStoreRss.framework */; };
 /* End PBXBuildFile section */
 
@@ -81,9 +82,12 @@
 		12B5AE291EA8D24B008627A4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		12B5AE2C1EA8D24B008627A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		12B5AE2E1EA8D24B008627A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2D487DF12EC8027230CA7763 /* Pods_iTunesStoreRSS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iTunesStoreRSS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A57CDC2EED0F9728C2F50BC /* Pods-iTunesStoreRSS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iTunesStoreRSS.release.xcconfig"; path = "Pods/Target Support Files/Pods-iTunesStoreRSS/Pods-iTunesStoreRSS.release.xcconfig"; sourceTree = "<group>"; };
 		560A75B7F55BD57C5DB5D34E /* Pods-iTunesStoreRss.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iTunesStoreRss.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iTunesStoreRss/Pods-iTunesStoreRss.debug.xcconfig"; sourceTree = "<group>"; };
 		698943CE1ABE6BAE8BEBBB7A /* Pods_iTunesStoreRss.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iTunesStoreRss.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		733BD8F209F84F6DD8107E2F /* Pods-iTunesStoreRss.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iTunesStoreRss.release.xcconfig"; path = "Pods/Target Support Files/Pods-iTunesStoreRss/Pods-iTunesStoreRss.release.xcconfig"; sourceTree = "<group>"; };
+		AF76947469CEA7CF5E356A20 /* Pods-iTunesStoreRSS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iTunesStoreRSS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iTunesStoreRSS/Pods-iTunesStoreRSS.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +96,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				653CF78EAE6C00050D3C3F90 /* Pods_iTunesStoreRss.framework in Frameworks */,
+				4DCAB9C8C2F2370C057FEBBD /* Pods_iTunesStoreRSS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,6 +265,8 @@
 			children = (
 				560A75B7F55BD57C5DB5D34E /* Pods-iTunesStoreRss.debug.xcconfig */,
 				733BD8F209F84F6DD8107E2F /* Pods-iTunesStoreRss.release.xcconfig */,
+				AF76947469CEA7CF5E356A20 /* Pods-iTunesStoreRSS.debug.xcconfig */,
+				4A57CDC2EED0F9728C2F50BC /* Pods-iTunesStoreRSS.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -268,6 +275,7 @@
 			isa = PBXGroup;
 			children = (
 				698943CE1ABE6BAE8BEBBB7A /* Pods_iTunesStoreRss.framework */,
+				2D487DF12EC8027230CA7763 /* Pods_iTunesStoreRSS.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -312,7 +320,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 12B5AE1A1EA8D24B008627A4 /* Build configuration list for PBXProject "iTunesStoreRSS" */;
+			buildConfigurationList = 12B5AE1A1EA8D24B008627A4 /* Build configuration list for PBXProject "iTunesStoreRss" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -371,7 +379,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iTunesStoreRss/Pods-iTunesStoreRss-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iTunesStoreRSS/Pods-iTunesStoreRSS-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C8C87DBD8FAA29107A46C36E /* [CP] Copy Pods Resources */ = {
@@ -386,7 +394,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iTunesStoreRss/Pods-iTunesStoreRss-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iTunesStoreRSS/Pods-iTunesStoreRSS-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -547,7 +555,7 @@
 		};
 		12B5AE321EA8D24B008627A4 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 560A75B7F55BD57C5DB5D34E /* Pods-iTunesStoreRss.debug.xcconfig */;
+			baseConfigurationReference = AF76947469CEA7CF5E356A20 /* Pods-iTunesStoreRSS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = XAKQ2G84WP;
@@ -562,7 +570,7 @@
 		};
 		12B5AE331EA8D24B008627A4 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 733BD8F209F84F6DD8107E2F /* Pods-iTunesStoreRss.release.xcconfig */;
+			baseConfigurationReference = 4A57CDC2EED0F9728C2F50BC /* Pods-iTunesStoreRSS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = XAKQ2G84WP;
@@ -578,7 +586,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		12B5AE1A1EA8D24B008627A4 /* Build configuration list for PBXProject "iTunesStoreRSS" */ = {
+		12B5AE1A1EA8D24B008627A4 /* Build configuration list for PBXProject "iTunesStoreRss" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				12B5AE2F1EA8D24B008627A4 /* Debug */,
