@@ -18,6 +18,7 @@ final class AppLookupViewController: RxViewController {
     @IBOutlet weak var lookupHeaderView: LookupHeaderView!
     
     @IBOutlet var sectionHeaderView: UIView!
+    @IBOutlet weak var sectionHeaderSegmentedControl: UISegmentedControl!
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -27,14 +28,20 @@ final class AppLookupViewController: RxViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("AppLookupViewController - viewDidLoad")
         setup()
         rxSetup()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        tableView.setNeedsLayout()
+        tableView.layoutIfNeeded()
+        tableView.reloadData()
+    }
+    
     private func setup() {
         tableView.alpha = 0
-        tableView.estimatedRowHeight = 200//128
+        tableView.estimatedRowHeight = 128//200//
         tableView.rowHeight = UITableViewAutomaticDimension
         
         dataSource.configureCell = { (datasource, tableView, indexPath, item) in
@@ -50,21 +57,27 @@ final class AppLookupViewController: RxViewController {
             .rx.setDelegate(self)
             .disposed(by: disposeBag)
         
-        rx.viewDidLayoutSubviews
-            .subscribe(onNext: { [weak self] _ in
-                guard let tableView = self?.tableView else { return }
-                tableView.setNeedsLayout()
-                tableView.layoutIfNeeded()
-                tableView.reloadData()
-            }).disposed(by: disposeBag)
-        
-        
         //input
         let input = self.viewModel.input
         
-        self.rx.viewWillAppear
-            .map { _ in }
+        self.navigationItem.rightBarButtonItem?
+            .rx.tap
+            .bind(to: input.shareDidTap)
+            .disposed(by: disposeBag)
+        
+        let appearLoad = self.rx.viewWillAppear
+            .map { _ in LookupServiceType.lookup }
             .take(1)
+        
+        let segmentChanged = self.sectionHeaderSegmentedControl
+            .rx.controlEvent(.valueChanged)
+            .map { [weak self] _ -> LookupServiceType in
+                let index = self?.sectionHeaderSegmentedControl.selectedSegmentIndex ?? 0
+                return index == 0 ? .lookup : .review
+        }
+        
+        Observable.from([appearLoad, segmentChanged])
+            .merge()
             .bind(to: input.refresh)
             .disposed(by: disposeBag)
         
@@ -73,13 +86,11 @@ final class AppLookupViewController: RxViewController {
         let output = self.viewModel.output
         
         output.loadCompleted
-            .observeOn(
-                AnimateScheduler(withDuration: 0.3, options:[.curveEaseOut])
-            ).map { _ in 1 }
+            .observeOn(AnimateScheduler(withDuration: 0.3, options:[.curveEaseOut]))
+            .map { _ in 1 }
             .bind(to: self.tableView.rx.alpha)
             .disposed(by: disposeBag)
         
-     
         output.sections
             .drive(tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
@@ -88,6 +99,17 @@ final class AppLookupViewController: RxViewController {
             .drive(weak: self, type(of: self).updateHeader)
             .disposed(by: disposeBag)
         
+        output.shareToURL
+            .drive(weak: self, type(of: self).share)
+            .disposed(by: disposeBag)
+    }
+    
+    func share(url: URL?) {
+        guard let url = url else { return }
+        
+        let activityViewController = UIActivityViewController(activityItems: [url],
+                                                              applicationActivities: nil)
+        self.present(activityViewController, animated: true, completion: nil)
     }
     
     func updateHeader(by viewModel: LookupHeaderViewModelType?) {
@@ -123,9 +145,28 @@ extension LookupCellType {
         switch self {
         case .screenshot:
             return "ScreenShotCell"
-        default:
+        case .content:
             return "ContentCell"
+        case .review:
+            return "ReviewCell"
         }
     }
     
 }
+
+/*
+ let myWebsite = NSURL(string:"http://www.google.com/")
+ let img: UIImage = image!
+ 
+ guard let url = myWebsite else {
+ print("nothing found")
+ return
+ }
+ 
+ let shareItems:Array = [img, url]
+ let activityViewController:UIActivityViewController = UIActivityViewController(activityItems: shareItems, applicationActivities: nil)
+ activityViewController.excludedActivityTypes = [UIActivityTypePrint, UIActivityTypePostToWeibo, UIActivityTypeCopyToPasteboard, UIActivityTypeAddToReadingList, UIActivityTypePostToVimeo]
+ self.presentViewController(activityViewController, animated: true, completion: nil)
+ 
+ 
+ */

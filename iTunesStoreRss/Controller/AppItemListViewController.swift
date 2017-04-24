@@ -18,7 +18,6 @@ final class AppItemListViewController: RxViewController {
     @IBOutlet weak var tableView: UITableView!
     
     let refreshControl = UIRefreshControl()
-    
     let dataSource = RxTableViewSectionedReloadDataSource<ItemSectionData>()
     
     var viewModel: ItemListViewModelType!
@@ -37,6 +36,7 @@ final class AppItemListViewController: RxViewController {
         }
     }
     
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         defer {
             super.prepare(for: segue, sender: sender)
@@ -51,8 +51,8 @@ final class AppItemListViewController: RxViewController {
         
     }
     
+    
     private func setup() {
-        tableView.addSubview(refreshControl)
         
         dataSource.configureCell = { (datasource, tableView, indexPath, item) in
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
@@ -67,14 +67,17 @@ final class AppItemListViewController: RxViewController {
             .rx.setDelegate(self)
             .disposed(by: disposeBag)
         
+        
         // input
         let input = self.viewModel.input
         
         let viewWillAppear = self.rx.viewWillAppear.map { _ in }.take(1)
         let refresh = self.refreshControl.rx.controlEvent(.valueChanged).map { _ in }
         
+        
         Observable.from([viewWillAppear, refresh])
             .merge()
+            .map { _ in .topFreeApplications } //Router.FeedType }
             .bind(to: input.refresh)
             .disposed(by: disposeBag)
         
