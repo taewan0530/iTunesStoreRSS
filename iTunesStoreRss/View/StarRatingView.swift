@@ -1,5 +1,5 @@
 //
-//  StarRateView.swift
+//  StarRatingView.swift
 //  iTunesStoreRss
 //
 //  Created by taewan on 2017. 4. 23..
@@ -10,10 +10,10 @@ import UIKit
 
 
 @IBDesignable
-open class StarRateView: UIView {
+open class StarRatingView: UIView {
     
     @IBInspectable
-    var currentRate: Float = 0 {
+    var currentRating: Float = 0 {
         didSet { self.setNeedsDisplay() }
     }
     
@@ -54,13 +54,13 @@ open class StarRateView: UIView {
             let fillImage = self.fillImage else { return }
 
         let size = emptyImage.size
-        let currentRate = CGFloat(self.currentRate)
+        let currentRating = CGFloat(self.currentRating)
         
         for i in 0..<maxRate {
             let index = CGFloat(i)
             let x = (size.width + spacing) * index
-            if index < currentRate {
-                if 0 < floor(currentRate - index) {
+            if index < currentRating {
+                if 0 < floor(currentRating - index) {
                      fillImage.draw(at: .init(x: x, y: 0))
                 } else {
                      halfImage.draw(at: .init(x: x, y: 0))
