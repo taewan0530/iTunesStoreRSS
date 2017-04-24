@@ -2,12 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/taewan/Documents/github/iTunesStoreRss 2/iTunesStoreRSS.xcodeproj">
+      location = "group:iTunesStoreRSS.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:iTunesStoreRss.xcodeproj">
    </FileRef>
 </Workspace>

@@ -256,8 +256,7 @@
 				12B5AE221EA8D24B008627A4 /* AppDelegate.swift */,
 				12B5AE2E1EA8D24B008627A4 /* Info.plist */,
 			);
-			name = iTunesStoreRSS;
-			path = iTunesStoreRss;
+			path = iTunesStoreRSS;
 			sourceTree = "<group>";
 		};
 		3710EAD6EE152582342EDFF6 /* Pods */ = {
@@ -320,7 +319,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 12B5AE1A1EA8D24B008627A4 /* Build configuration list for PBXProject "iTunesStoreRss" */;
+			buildConfigurationList = 12B5AE1A1EA8D24B008627A4 /* Build configuration list for PBXProject "iTunesStoreRSS" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -586,7 +585,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		12B5AE1A1EA8D24B008627A4 /* Build configuration list for PBXProject "iTunesStoreRss" */ = {
+		12B5AE1A1EA8D24B008627A4 /* Build configuration list for PBXProject "iTunesStoreRSS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				12B5AE2F1EA8D24B008627A4 /* Debug */,
