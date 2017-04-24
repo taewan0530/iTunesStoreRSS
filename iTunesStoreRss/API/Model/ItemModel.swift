@@ -19,12 +19,16 @@ struct ItemModel: JSONCollection {
     let artist: String
     let category: String
     
+    let linkURL: URL?
+    //여기도 앱 url 넣자.
     init(_ json: JSON) {
         self.id = json["id"]["attributes"]["im:id"].stringValue
         self.title = json["im:name"]["label"].stringValue
         
         self.artist = json["im:artist"]["label"].stringValue
         self.category = json["category"]["label"].stringValue
+        
+        self.linkURL = URL(string: json["link"]["attributes"]["href"].stringValue)
         
         if let lastImage = json["im:image"].arrayValue.last {     
             self.imageURL = URL(string: lastImage["label"].stringValue)

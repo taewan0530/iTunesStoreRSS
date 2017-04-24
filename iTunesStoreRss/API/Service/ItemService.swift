@@ -13,7 +13,7 @@ import SwiftyJSON
 
 
 final class ItemService: NSObject {
-    fileprivate var rxRefresh: PublishSubject<Void> = .init()
+    fileprivate var rxRefresh: PublishSubject<Router.FeedType> = .init()
     
     var feedType: Router.FeedType
     var genre: Router.Genre
@@ -28,21 +28,19 @@ final class ItemService: NSObject {
 }
 
 extension Reactive where Base: ItemService {
-    var refresh: PublishSubject<Void> {
+    var refresh: PublishSubject<Router.FeedType> {
         return self.base.rxRefresh
     }
     
     var dataSources: Observable<[ItemModel]> {
-        let responseJSON = Router
-            .applications(feedType: self.base.feedType,
-                          limit: self.base.limit,
-                          genre: self.base.genre)
-            .asDataRequest()
-            .rx.responseSwiftyJSON()
-        
         return self.base.rxRefresh
-            .flatMap { responseJSON }
-            .map { ItemModel.collection($0["feed"]["entry"]) }
+            .flatMap { feedType in
+                Router.applications(feedType: feedType,
+                                    limit: self.base.limit,
+                                    genre: self.base.genre)
+                    .asDataRequest()
+                    .rx.responseSwiftyJSON()
+            }.map { ItemModel.collection($0["feed"]["entry"]) }
             .shareReplay(1)
     }
     

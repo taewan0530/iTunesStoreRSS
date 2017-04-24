@@ -10,31 +10,26 @@ import Foundation
 
 import Alamofire
 
-
-
-enum Router: URLRequestConvertible {
+enum Router {
+    
     case applications(feedType: Router.FeedType, limit: Int, genre: Router.Genre)
     case lookup(id: String)
+    case customerReviews(id: String)
     
-    static let baseURLString = "https://itunes.apple.com"
+    static let baseURLString: String = "https://itunes.apple.com"
+    static var location: String = "kr"//"us"
     
-    
-    var result: (path: String, parameters: Parameters?)  {
+    fileprivate var result: (path: String, parameters: Parameters?)  {
         switch self {
         case .applications(let feedType, let limit, let genre):
-            return ("/kr/rss/\(feedType.rawValue)/limit=\(limit)/genre=\(genre.rawValue)/json", nil)
+            return ("/\(Router.location)/rss/\(feedType.rawValue)/limit=\(limit)/genre=\(genre.rawValue)/json", nil)
 
         case .lookup(let id):
-            return ("/lookup", ["id": id, "country": "kr"])
+            return ("/lookup", ["id": id, "country": Router.location])
+            
+        case .customerReviews(let id):
+            return ("/\(Router.location)/rss/customerreviews/id=\(id)/json", nil)
         }
-    }
-    
-    // MARK: URLRequestConvertible
-    func asURLRequest() throws -> URLRequest {
-        let url = try Router.baseURLString.asURL()
-        let urlRequest = URLRequest(url: url.appendingPathComponent(result.path))
-        
-        return try URLEncoding.default.encode(urlRequest, with: result.parameters)
     }
     
     public func asDataRequest() -> DataRequest {
@@ -42,6 +37,16 @@ enum Router: URLRequestConvertible {
     }
 }
 
+
+extension Router: URLRequestConvertible {
+    // MARK: URLRequestConvertible
+    func asURLRequest() throws -> URLRequest {
+        let url = try Router.baseURLString.asURL()
+        let urlRequest = URLRequest(url: url.appendingPathComponent(result.path))
+        
+        return try URLEncoding.default.encode(urlRequest, with: result.parameters)
+    }
+}
 
 
 // MARK: - Other enum
@@ -53,8 +58,6 @@ extension Router {
         case topFreeApplications = "topfreeapplications"
         case topGrossingApplications = "topgrossingapplications"
         case topPaidApplications = "toppaidapplications"
-//        case topFreeiPadApplications = "topfreeipadapplications"
-//        case topPaidiPadApplications = "toppaidipadapplications"
     }
     
     enum Genre: Int {
