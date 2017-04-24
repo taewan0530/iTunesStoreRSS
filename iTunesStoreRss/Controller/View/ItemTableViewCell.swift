@@ -9,7 +9,9 @@
 import UIKit
 
 import AlamofireImage
-
+import RxSwift
+import RxCocoa
+import RxBindNext
 
 final class ItemTableViewCell: UITableViewCell {
     
@@ -17,9 +19,11 @@ final class ItemTableViewCell: UITableViewCell {
     @IBOutlet weak var thumbnailImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     
+    fileprivate var disposeBag = DisposeBag()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.updateStyle()
+        self.layoutStyle()
     }
     
     override func prepareForReuse() {
@@ -28,25 +32,40 @@ final class ItemTableViewCell: UITableViewCell {
         thumbnailImageView.image = nil
     }
     
-    private func updateStyle() {
-        thumbnailImageView.layer.borderWidth = 1
-        thumbnailImageView.layer.borderColor = UIColor.SRGray.cgColor
+    private func layoutStyle() {
+        thumbnailImageView.layer.borderWidth = 1/UIScreen.main.scale
+        thumbnailImageView.layer.borderColor = UIColor.lightGray.cgColor
         thumbnailImageView.layer.cornerRadius = 16
     }
 }
 
 
 
-// MARK: - viewModel
+// MARK: - ViewModel Configurable
 extension ItemTableViewCell: Configurable, ConfigureCell {
-
-
+    
+    
     func configure(by viewModel: ItemTableCellModelType) {
-        rankLabel.text = "\(viewModel.rank)"
-        titleLabel.text = viewModel.title
-        if let url = viewModel.imageURL {
-            thumbnailImageView.af_setImage(withURL: url,
-                                           imageTransition: .crossDissolve(0.3))
-        }
+        disposeBag = DisposeBag()
+       
+        let output = viewModel.output
+        output.rank
+            .drive(self.rankLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        output.title
+            .drive(self.titleLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        output.imageURL
+            .drive(weak: self, type(of: self).updateThumbnatilImage)
+            .disposed(by: disposeBag)
+    }
+    
+    func updateThumbnatilImage(withURL url: URL?) {
+        guard let url = url else { return }
+        self.thumbnailImageView.af_cancelImageRequest()
+        self.thumbnailImageView.af_setImage(withURL: url,
+                                            imageTransition: .crossDissolve(0.3))
     }
 }
