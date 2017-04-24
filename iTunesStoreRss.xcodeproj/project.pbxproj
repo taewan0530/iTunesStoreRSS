@@ -21,7 +21,6 @@
 		1225401E1EAB3B4900F60967 /* RxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1225401C1EAB3B4900F60967 /* RxViewController.swift */; };
 		1225401F1EAB3B4900F60967 /* UIViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1225401D1EAB3B4900F60967 /* UIViewController+Rx.swift */; };
 		1231DAA41EAC32E300D834A2 /* StarRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1231DAA31EAC32E300D834A2 /* StarRatingView.swift */; };
-		1258B89C1EAC443000A81205 /* InfoLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1258B89B1EAC443000A81205 /* InfoLabel.swift */; };
 		1258B89E1EAC48F200A81205 /* LookupHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1258B89D1EAC48F200A81205 /* LookupHeaderView.swift */; };
 		125B8B691EAD810F00480D10 /* LookupTableCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125B8B681EAD810F00480D10 /* LookupTableCellType.swift */; };
 		125B8B6B1EAD822000480D10 /* LookupReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125B8B6A1EAD822000480D10 /* LookupReviewTableViewCell.swift */; };
@@ -60,7 +59,6 @@
 		1225401C1EAB3B4900F60967 /* RxViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxViewController.swift; sourceTree = "<group>"; };
 		1225401D1EAB3B4900F60967 /* UIViewController+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Rx.swift"; sourceTree = "<group>"; };
 		1231DAA31EAC32E300D834A2 /* StarRatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarRatingView.swift; sourceTree = "<group>"; };
-		1258B89B1EAC443000A81205 /* InfoLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoLabel.swift; sourceTree = "<group>"; };
 		1258B89D1EAC48F200A81205 /* LookupHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LookupHeaderView.swift; sourceTree = "<group>"; };
 		125B8B681EAD810F00480D10 /* LookupTableCellType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LookupTableCellType.swift; sourceTree = "<group>"; };
 		125B8B6A1EAD822000480D10 /* LookupReviewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LookupReviewTableViewCell.swift; sourceTree = "<group>"; };
@@ -154,7 +152,6 @@
 			isa = PBXGroup;
 			children = (
 				1231DAA31EAC32E300D834A2 /* StarRatingView.swift */,
-				1258B89B1EAC443000A81205 /* InfoLabel.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -424,7 +421,6 @@
 				125B8B691EAD810F00480D10 /* LookupTableCellType.swift in Sources */,
 				120593591EA8E57600C68D31 /* Router.swift in Sources */,
 				12B5AE231EA8D24B008627A4 /* AppDelegate.swift in Sources */,
-				1258B89C1EAC443000A81205 /* InfoLabel.swift in Sources */,
 				1205936D1EA8FC7C00C68D31 /* ItemListViewModel.swift in Sources */,
 				128545181EAC9D6400330FAD /* LookupContentCellViewModel.swift in Sources */,
 				125B8B6B1EAD822000480D10 /* LookupReviewTableViewCell.swift in Sources */,
