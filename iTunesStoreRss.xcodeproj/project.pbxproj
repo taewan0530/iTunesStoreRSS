@@ -75,7 +75,7 @@
 		129717F01EA8DC6B00C10677 /* AppItemListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppItemListViewController.swift; sourceTree = "<group>"; };
 		129717F51EA8DCFD00C10677 /* ItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
 		129717FC1EA8E10A00C10677 /* AppLookupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppLookupViewController.swift; sourceTree = "<group>"; };
-		12B5AE1F1EA8D24B008627A4 /* iTunesStoreRss.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTunesStoreRss.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		12B5AE1F1EA8D24B008627A4 /* iTunesStoreRSS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTunesStoreRSS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12B5AE221EA8D24B008627A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		12B5AE271EA8D24B008627A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		12B5AE291EA8D24B008627A4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -233,7 +233,7 @@
 		12B5AE201EA8D24B008627A4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				12B5AE1F1EA8D24B008627A4 /* iTunesStoreRss.app */,
+				12B5AE1F1EA8D24B008627A4 /* iTunesStoreRSS.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -275,9 +275,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		12B5AE1E1EA8D24B008627A4 /* iTunesStoreRss */ = {
+		12B5AE1E1EA8D24B008627A4 /* iTunesStoreRSS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 12B5AE311EA8D24B008627A4 /* Build configuration list for PBXNativeTarget "iTunesStoreRss" */;
+			buildConfigurationList = 12B5AE311EA8D24B008627A4 /* Build configuration list for PBXNativeTarget "iTunesStoreRSS" */;
 			buildPhases = (
 				72BF976A3FCB787F15E9B4FE /* [CP] Check Pods Manifest.lock */,
 				12B5AE1B1EA8D24B008627A4 /* Sources */,
@@ -290,9 +290,9 @@
 			);
 			dependencies = (
 			);
-			name = iTunesStoreRss;
+			name = iTunesStoreRSS;
 			productName = iTunesStoreRss;
-			productReference = 12B5AE1F1EA8D24B008627A4 /* iTunesStoreRss.app */;
+			productReference = 12B5AE1F1EA8D24B008627A4 /* iTunesStoreRSS.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -325,7 +325,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				12B5AE1E1EA8D24B008627A4 /* iTunesStoreRss */,
+				12B5AE1E1EA8D24B008627A4 /* iTunesStoreRSS */,
 			);
 		};
 /* End PBXProject section */
@@ -554,7 +554,7 @@
 				INFOPLIST_FILE = iTunesStoreRss/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = kr.co.taewan.iTunesStoreRss;
+				PRODUCT_BUNDLE_IDENTIFIER = kr.co.taewan.iTunesStoreRSS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -569,7 +569,7 @@
 				INFOPLIST_FILE = iTunesStoreRss/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = kr.co.taewan.iTunesStoreRss;
+				PRODUCT_BUNDLE_IDENTIFIER = kr.co.taewan.iTunesStoreRSS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -587,7 +587,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		12B5AE311EA8D24B008627A4 /* Build configuration list for PBXNativeTarget "iTunesStoreRss" */ = {
+		12B5AE311EA8D24B008627A4 /* Build configuration list for PBXNativeTarget "iTunesStoreRSS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				12B5AE321EA8D24B008627A4 /* Debug */,
