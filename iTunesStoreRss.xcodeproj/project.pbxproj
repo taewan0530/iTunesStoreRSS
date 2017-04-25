@@ -42,6 +42,7 @@
 		323CC60A1EAF364C008403DD /* RxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323CC6061EAF364C008403DD /* RxViewController.swift */; };
 		323CC60B1EAF364C008403DD /* UIImageView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323CC6071EAF364C008403DD /* UIImageView+Rx.swift */; };
 		323CC60C1EAF364C008403DD /* UIViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323CC6081EAF364C008403DD /* UIViewController+Rx.swift */; };
+		323CC60E1EAF381C008403DD /* StarraingView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323CC60D1EAF381C008403DD /* StarraingView+Rx.swift */; };
 		4DCAB9C8C2F2370C057FEBBD /* Pods_iTunesStoreRSS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D487DF12EC8027230CA7763 /* Pods_iTunesStoreRSS.framework */; };
 		653CF78EAE6C00050D3C3F90 /* Pods_iTunesStoreRss.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 698943CE1ABE6BAE8BEBBB7A /* Pods_iTunesStoreRss.framework */; };
 /* End PBXBuildFile section */
@@ -85,6 +86,7 @@
 		323CC6061EAF364C008403DD /* RxViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxViewController.swift; sourceTree = "<group>"; };
 		323CC6071EAF364C008403DD /* UIImageView+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Rx.swift"; sourceTree = "<group>"; };
 		323CC6081EAF364C008403DD /* UIViewController+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Rx.swift"; sourceTree = "<group>"; };
+		323CC60D1EAF381C008403DD /* StarraingView+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StarraingView+Rx.swift"; sourceTree = "<group>"; };
 		4A57CDC2EED0F9728C2F50BC /* Pods-iTunesStoreRSS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iTunesStoreRSS.release.xcconfig"; path = "Pods/Target Support Files/Pods-iTunesStoreRSS/Pods-iTunesStoreRSS.release.xcconfig"; sourceTree = "<group>"; };
 		560A75B7F55BD57C5DB5D34E /* Pods-iTunesStoreRss.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iTunesStoreRss.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iTunesStoreRss/Pods-iTunesStoreRss.debug.xcconfig"; sourceTree = "<group>"; };
 		698943CE1ABE6BAE8BEBBB7A /* Pods_iTunesStoreRss.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iTunesStoreRss.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -258,6 +260,7 @@
 				323CC6061EAF364C008403DD /* RxViewController.swift */,
 				323CC6071EAF364C008403DD /* UIImageView+Rx.swift */,
 				323CC6081EAF364C008403DD /* UIViewController+Rx.swift */,
+				323CC60D1EAF381C008403DD /* StarraingView+Rx.swift */,
 			);
 			name = Rx;
 			path = iTunesStoreRss/Rx;
@@ -414,6 +417,7 @@
 				128545101EAC5CE000330FAD /* Configable.swift in Sources */,
 				1205936B1EA8F22400C68D31 /* LookupService.swift in Sources */,
 				323CC60C1EAF364C008403DD /* UIViewController+Rx.swift in Sources */,
+				323CC60E1EAF381C008403DD /* StarraingView+Rx.swift in Sources */,
 				128545161EAC89BD00330FAD /* LookupContentTableViewCell.swift in Sources */,
 				121D8AD11EA903FA00D9AE99 /* ItemTableCellModel.swift in Sources */,
 				1258B89E1EAC48F200A81205 /* LookupHeaderView.swift in Sources */,

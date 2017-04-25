@@ -39,7 +39,7 @@ extension LookupReviewTableViewCell: Configurable, ConfigureCell {
             .disposed(by: disposeBag)
         
         output.rating
-            .drive(weak: self, type(of: self).updateStarRate)
+            .drive(self.starRatingView.rx.currentRating)
             .disposed(by: disposeBag)
         
         output.name
@@ -48,13 +48,7 @@ extension LookupReviewTableViewCell: Configurable, ConfigureCell {
         
         output.content
             .drive(self.contentLabel.rx.text)
-            .disposed(by: disposeBag)
-        
-        
-    }
-    
-    func updateStarRate(_ rating: Float) {
-        self.starRatingView.currentRating = rating
+            .disposed(by: disposeBag)   
     }
 
 }

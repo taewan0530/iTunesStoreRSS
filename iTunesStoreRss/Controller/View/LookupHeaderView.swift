@@ -93,7 +93,7 @@ extension LookupHeaderView: Configurable, ConfigureCell {
             .disposed(by: disposeBag)
         
         output.averageUserRating
-            .drive(weak: self, type(of: self).updateRating)
+            .drive(self.starRatingView.rx.currentRating)
             .disposed(by: disposeBag)
         
         output.userRatingCount
@@ -112,15 +112,10 @@ extension LookupHeaderView: Configurable, ConfigureCell {
             .drive(self.ratingCountLabel.rx.isHidden)
             .disposed(by: disposeBag)
         
-        
         output.openURL
             .drive(onNext: { url in
                 guard let url = url else { return }
                 UIApplication.shared.openURL(url)
             }).disposed(by: disposeBag)
-    }
-
-    func updateRating(_ rating: Float) {
-        self.starRatingView.currentRating = rating
     }
 }
