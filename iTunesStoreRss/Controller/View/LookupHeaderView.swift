@@ -77,7 +77,7 @@ extension LookupHeaderView: Configurable, ConfigureCell {
         let output = viewModel.output
         
         output.artworkURL
-            .drive(weak: self, type(of: self).updateArtworkImage)
+            .drive(self.imageView.rx.afImageURL)
             .disposed(by: disposeBag)
         
         output.title
@@ -119,14 +119,7 @@ extension LookupHeaderView: Configurable, ConfigureCell {
                 UIApplication.shared.openURL(url)
             }).disposed(by: disposeBag)
     }
-    
-    func updateArtworkImage(withURL url: URL?) {
-        guard let url = url else { return }
-        self.imageView.af_cancelImageRequest()
-        self.imageView.af_setImage(withURL: url,
-                                   imageTransition: .crossDissolve(0.3))
-    }
-    
+
     func updateRating(_ rating: Float) {
         self.starRatingView.currentRating = rating
     }

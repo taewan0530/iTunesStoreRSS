@@ -58,14 +58,7 @@ extension ItemTableViewCell: Configurable, ConfigureCell {
             .disposed(by: disposeBag)
         
         output.imageURL
-            .drive(weak: self, type(of: self).updateThumbnatilImage)
-            .disposed(by: disposeBag)
-    }
-    
-    func updateThumbnatilImage(withURL url: URL?) {
-        guard let url = url else { return }
-        self.thumbnailImageView.af_cancelImageRequest()
-        self.thumbnailImageView.af_setImage(withURL: url,
-                                            imageTransition: .crossDissolve(0.3))
+            .drive(self.thumbnailImageView.rx.afImageURL)
+            .disposed(by: disposeBag)   
     }
 }
