@@ -18,8 +18,6 @@
 		1205936D1EA8FC7C00C68D31 /* ItemListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1205936C1EA8FC7C00C68D31 /* ItemListViewModel.swift */; };
 		120593711EA8FF0E00C68D31 /* LookupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120593701EA8FF0E00C68D31 /* LookupViewModel.swift */; };
 		121D8AD11EA903FA00D9AE99 /* ItemTableCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121D8AD01EA903FA00D9AE99 /* ItemTableCellModel.swift */; };
-		1225401E1EAB3B4900F60967 /* RxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1225401C1EAB3B4900F60967 /* RxViewController.swift */; };
-		1225401F1EAB3B4900F60967 /* UIViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1225401D1EAB3B4900F60967 /* UIViewController+Rx.swift */; };
 		1231DAA41EAC32E300D834A2 /* StarRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1231DAA31EAC32E300D834A2 /* StarRatingView.swift */; };
 		1258B89E1EAC48F200A81205 /* LookupHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1258B89D1EAC48F200A81205 /* LookupHeaderView.swift */; };
 		125B8B691EAD810F00480D10 /* LookupTableCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125B8B681EAD810F00480D10 /* LookupTableCellType.swift */; };
@@ -29,7 +27,6 @@
 		125B8B711EAD84A600480D10 /* ReviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125B8B701EAD84A600480D10 /* ReviewModel.swift */; };
 		1285450A1EAC57A200330FAD /* LookupHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128545091EAC57A200330FAD /* LookupHeaderViewModel.swift */; };
 		128545101EAC5CE000330FAD /* Configable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1285450F1EAC5CE000330FAD /* Configable.swift */; };
-		128545121EAC71C000330FAD /* AnimateScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128545111EAC71C000330FAD /* AnimateScheduler.swift */; };
 		128545141EAC89AB00330FAD /* LookupScreenshotTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128545131EAC89AB00330FAD /* LookupScreenshotTableViewCell.swift */; };
 		128545161EAC89BD00330FAD /* LookupContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128545151EAC89BD00330FAD /* LookupContentTableViewCell.swift */; };
 		128545181EAC9D6400330FAD /* LookupContentCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128545171EAC9D6400330FAD /* LookupContentCellViewModel.swift */; };
@@ -41,6 +38,10 @@
 		12B5AE281EA8D24B008627A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12B5AE261EA8D24B008627A4 /* Main.storyboard */; };
 		12B5AE2A1EA8D24B008627A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12B5AE291EA8D24B008627A4 /* Assets.xcassets */; };
 		12B5AE2D1EA8D24B008627A4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12B5AE2B1EA8D24B008627A4 /* LaunchScreen.storyboard */; };
+		323CC6091EAF364C008403DD /* AnimateScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323CC6051EAF364C008403DD /* AnimateScheduler.swift */; };
+		323CC60A1EAF364C008403DD /* RxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323CC6061EAF364C008403DD /* RxViewController.swift */; };
+		323CC60B1EAF364C008403DD /* UIImageView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323CC6071EAF364C008403DD /* UIImageView+Rx.swift */; };
+		323CC60C1EAF364C008403DD /* UIViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323CC6081EAF364C008403DD /* UIViewController+Rx.swift */; };
 		4DCAB9C8C2F2370C057FEBBD /* Pods_iTunesStoreRSS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D487DF12EC8027230CA7763 /* Pods_iTunesStoreRSS.framework */; };
 		653CF78EAE6C00050D3C3F90 /* Pods_iTunesStoreRss.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 698943CE1ABE6BAE8BEBBB7A /* Pods_iTunesStoreRss.framework */; };
 /* End PBXBuildFile section */
@@ -57,8 +58,6 @@
 		1205936C1EA8FC7C00C68D31 /* ItemListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemListViewModel.swift; sourceTree = "<group>"; };
 		120593701EA8FF0E00C68D31 /* LookupViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LookupViewModel.swift; sourceTree = "<group>"; };
 		121D8AD01EA903FA00D9AE99 /* ItemTableCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTableCellModel.swift; sourceTree = "<group>"; };
-		1225401C1EAB3B4900F60967 /* RxViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxViewController.swift; sourceTree = "<group>"; };
-		1225401D1EAB3B4900F60967 /* UIViewController+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Rx.swift"; sourceTree = "<group>"; };
 		1231DAA31EAC32E300D834A2 /* StarRatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarRatingView.swift; sourceTree = "<group>"; };
 		1258B89D1EAC48F200A81205 /* LookupHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LookupHeaderView.swift; sourceTree = "<group>"; };
 		125B8B681EAD810F00480D10 /* LookupTableCellType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LookupTableCellType.swift; sourceTree = "<group>"; };
@@ -68,7 +67,6 @@
 		125B8B701EAD84A600480D10 /* ReviewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewModel.swift; sourceTree = "<group>"; };
 		128545091EAC57A200330FAD /* LookupHeaderViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LookupHeaderViewModel.swift; sourceTree = "<group>"; };
 		1285450F1EAC5CE000330FAD /* Configable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configable.swift; sourceTree = "<group>"; };
-		128545111EAC71C000330FAD /* AnimateScheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimateScheduler.swift; sourceTree = "<group>"; };
 		128545131EAC89AB00330FAD /* LookupScreenshotTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LookupScreenshotTableViewCell.swift; sourceTree = "<group>"; };
 		128545151EAC89BD00330FAD /* LookupContentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LookupContentTableViewCell.swift; sourceTree = "<group>"; };
 		128545171EAC9D6400330FAD /* LookupContentCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LookupContentCellViewModel.swift; sourceTree = "<group>"; };
@@ -83,6 +81,10 @@
 		12B5AE2C1EA8D24B008627A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		12B5AE2E1EA8D24B008627A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2D487DF12EC8027230CA7763 /* Pods_iTunesStoreRSS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iTunesStoreRSS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		323CC6051EAF364C008403DD /* AnimateScheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimateScheduler.swift; sourceTree = "<group>"; };
+		323CC6061EAF364C008403DD /* RxViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxViewController.swift; sourceTree = "<group>"; };
+		323CC6071EAF364C008403DD /* UIImageView+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Rx.swift"; sourceTree = "<group>"; };
+		323CC6081EAF364C008403DD /* UIViewController+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Rx.swift"; sourceTree = "<group>"; };
 		4A57CDC2EED0F9728C2F50BC /* Pods-iTunesStoreRSS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iTunesStoreRSS.release.xcconfig"; path = "Pods/Target Support Files/Pods-iTunesStoreRSS/Pods-iTunesStoreRSS.release.xcconfig"; sourceTree = "<group>"; };
 		560A75B7F55BD57C5DB5D34E /* Pods-iTunesStoreRss.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iTunesStoreRss.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iTunesStoreRss/Pods-iTunesStoreRss.debug.xcconfig"; sourceTree = "<group>"; };
 		698943CE1ABE6BAE8BEBBB7A /* Pods_iTunesStoreRss.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iTunesStoreRss.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -141,16 +143,6 @@
 				1285450F1EAC5CE000330FAD /* Configable.swift */,
 			);
 			path = Util;
-			sourceTree = "<group>";
-		};
-		1225401B1EAB3B4900F60967 /* Rx */ = {
-			isa = PBXGroup;
-			children = (
-				1225401C1EAB3B4900F60967 /* RxViewController.swift */,
-				1225401D1EAB3B4900F60967 /* UIViewController+Rx.swift */,
-				128545111EAC71C000330FAD /* AnimateScheduler.swift */,
-			);
-			path = Rx;
 			sourceTree = "<group>";
 		};
 		1231DAA21EAC32CD00D834A2 /* View */ = {
@@ -246,8 +238,8 @@
 		12B5AE211EA8D24B008627A4 /* iTunesStoreRSS */ = {
 			isa = PBXGroup;
 			children = (
+				323CC6041EAF364C008403DD /* Rx */,
 				1231DAA21EAC32CD00D834A2 /* View */,
-				1225401B1EAB3B4900F60967 /* Rx */,
 				122540181EAB3B3C00F60967 /* Util */,
 				129717FE1EA8E14000C10677 /* API */,
 				129717EF1EA8DC6B00C10677 /* Controller */,
@@ -258,6 +250,18 @@
 			);
 			path = iTunesStoreRSS;
 			sourceTree = "<group>";
+		};
+		323CC6041EAF364C008403DD /* Rx */ = {
+			isa = PBXGroup;
+			children = (
+				323CC6051EAF364C008403DD /* AnimateScheduler.swift */,
+				323CC6061EAF364C008403DD /* RxViewController.swift */,
+				323CC6071EAF364C008403DD /* UIImageView+Rx.swift */,
+				323CC6081EAF364C008403DD /* UIViewController+Rx.swift */,
+			);
+			name = Rx;
+			path = iTunesStoreRss/Rx;
+			sourceTree = SOURCE_ROOT;
 		};
 		3710EAD6EE152582342EDFF6 /* Pods */ = {
 			isa = PBXGroup;
@@ -319,7 +323,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 12B5AE1A1EA8D24B008627A4 /* Build configuration list for PBXProject "iTunesStoreRSS" */;
+			buildConfigurationList = 12B5AE1A1EA8D24B008627A4 /* Build configuration list for PBXProject "iTunesStoreRss" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -363,7 +367,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		A59BB9D12E248215D6F73D58 /* [CP] Embed Pods Frameworks */ = {
@@ -406,10 +410,10 @@
 				1231DAA41EAC32E300D834A2 /* StarRatingView.swift in Sources */,
 				120593691EA8F12E00C68D31 /* ItemService.swift in Sources */,
 				129717F11EA8DC6B00C10677 /* AppItemListViewController.swift in Sources */,
-				1225401E1EAB3B4900F60967 /* RxViewController.swift in Sources */,
 				128545141EAC89AB00330FAD /* LookupScreenshotTableViewCell.swift in Sources */,
 				128545101EAC5CE000330FAD /* Configable.swift in Sources */,
 				1205936B1EA8F22400C68D31 /* LookupService.swift in Sources */,
+				323CC60C1EAF364C008403DD /* UIViewController+Rx.swift in Sources */,
 				128545161EAC89BD00330FAD /* LookupContentTableViewCell.swift in Sources */,
 				121D8AD11EA903FA00D9AE99 /* ItemTableCellModel.swift in Sources */,
 				1258B89E1EAC48F200A81205 /* LookupHeaderView.swift in Sources */,
@@ -418,15 +422,16 @@
 				125B8B6D1EAD83B500480D10 /* LookupReviewCellViewModel.swift in Sources */,
 				129717F61EA8DCFD00C10677 /* ItemTableViewCell.swift in Sources */,
 				129717FD1EA8E10A00C10677 /* AppLookupViewController.swift in Sources */,
-				128545121EAC71C000330FAD /* AnimateScheduler.swift in Sources */,
+				323CC60A1EAF364C008403DD /* RxViewController.swift in Sources */,
 				1285450A1EAC57A200330FAD /* LookupHeaderViewModel.swift in Sources */,
-				1225401F1EAB3B4900F60967 /* UIViewController+Rx.swift in Sources */,
+				323CC6091EAF364C008403DD /* AnimateScheduler.swift in Sources */,
 				1205935D1EA8E91500C68D31 /* Serializable.swift in Sources */,
 				120593641EA8EC2500C68D31 /* ItemModel.swift in Sources */,
 				1285451A1EAC9D8000330FAD /* LookupScreenshotCellViewModel.swift in Sources */,
 				120593711EA8FF0E00C68D31 /* LookupViewModel.swift in Sources */,
 				125B8B691EAD810F00480D10 /* LookupTableCellType.swift in Sources */,
 				120593591EA8E57600C68D31 /* Router.swift in Sources */,
+				323CC60B1EAF364C008403DD /* UIImageView+Rx.swift in Sources */,
 				12B5AE231EA8D24B008627A4 /* AppDelegate.swift in Sources */,
 				1205936D1EA8FC7C00C68D31 /* ItemListViewModel.swift in Sources */,
 				128545181EAC9D6400330FAD /* LookupContentCellViewModel.swift in Sources */,
@@ -585,7 +590,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		12B5AE1A1EA8D24B008627A4 /* Build configuration list for PBXProject "iTunesStoreRSS" */ = {
+		12B5AE1A1EA8D24B008627A4 /* Build configuration list for PBXProject "iTunesStoreRss" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				12B5AE2F1EA8D24B008627A4 /* Debug */,
