@@ -16,8 +16,7 @@ extension Reactive where Base: UIImageView {
     
     public var afImageURL: UIBindingObserver<Base, URL?> {
         return UIBindingObserver(UIElement: base) { imageView, url in
-            guard let url = url else { return }
-            imageView.af_cancelImageRequest()
+            guard let url = url else { return }    
             imageView.af_setImage(withURL: url,
                                   imageTransition: .crossDissolve(0.3))
         }
